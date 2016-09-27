@@ -3,12 +3,12 @@
 Since this [blog-post](https://hashrocket.com/blog/posts/elm-by-example-soup-to-nuts-part-1) is using elm version 0.16 and I am using 0.17
 this repository contains the adapted version for elm 0.17.
 
-The link I followed that helped me were:
+The links that helped me were:
  - The new [elm-todomvc](https://github.com/evancz/elm-todomvc) from https://github.com/evacz
  - The migration-tips at [www.lambdacat.com](http://www.lambdacat.com/migrating-from-elm-0-16-to-0-17-from-startapp)
 
 ## Installation
- - Install node ( i am using version  - node-v6.3.1-linux-x64)
+ - Install node ( i am using  *node-v6.3.1-linux-x64*)
  - run ```npm update && npm install -g elm```
 
 
@@ -49,12 +49,13 @@ elm-reactor
 elm-reactor 0.17.1
 Listening on http://localhost:8000/
 ```
+Now click on the src-folder and open index.html
 
 If you want to see the elm-app on another computer in your network, you can start elm-reactor like this:
 ```bash
 elm-reactor -a 0.0.0.0
 ```
-This will bind the reactor on all interfaces.
+*This will bind the reactor on all interfaces.*
 
 
 ## Changes
@@ -63,6 +64,11 @@ In order to see the diffs use:
 diff -y src/ChannelSwitcher.elm src/ChannelSwitcher.org.16
 ```
 
+In the original posting the [materialize.min.css](wget https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css) was linked via the internet, if wanted the stylesheet local:
+```bash
+cd src
+wget https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css
+```
 
 ## Links
  - https://hashrocket.com/blog/posts/elm-by-example-soup-to-nuts-part-1
