@@ -25,7 +25,18 @@ Some new packages are needed. Here is the upgrade plan.
     elm-lang/virtual-dom 1.1.1
 
 Do you approve of this plan? [Y/n]
+Starting downloads...
 
+  ● elm-lang/html 1.1.0
+  ● elm-lang/virtual-dom 1.1.1
+
+● elm-lang/core 4.0.5
+Packages configured successfully!
+Success! Compiled 30 modules.                                       
+```
+
+After that run the following command:
+```bash
 elm-make src/ChannelSwitcher.elm --output src/channel_switcher.js
 ```
 
@@ -35,6 +46,8 @@ elm-make src/ChannelSwitcher.elm --output src/channel_switcher.js
 After the translation ran, start the elm-reactor:
 ```bash
 elm-reactor
+elm-reactor 0.17.1
+Listening on http://localhost:8000/
 ```
 
 If you want to see the elm-app on another computer in your network, you can start elm-reactor like this:
