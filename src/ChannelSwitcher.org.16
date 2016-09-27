@@ -1,0 +1,73 @@
+module ChannelSwitcher where
+
+-- IMPORTS
+import Html exposing (..)
+import Html.Attributes exposing (..)
+import Html.Events exposing (..)
+import Html.Events.Extra exposing (..)
+import String
+import StartApp.Simple as StartApp
+
+-- MODEL
+type alias Model =
+  { channels: List String
+  , selectedChannel: Int
+  , query: String
+  }
+
+initialModel : Model
+initialModel =
+  { channels = ["Elm", "React.js", "Ember", "Angular 2", "Om", "OffTopic" ]
+  , selectedChannel = -1
+  , query = ""
+  }
+
+-- UPDATE
+type Action = NoOp | Filter String | Select Int
+
+update action model =
+  case action of
+    NoOp ->
+      model
+
+    Filter query ->
+      { model | query = query }
+
+    Select index ->
+      { model | selectedChannel = index }
+
+
+-- VIEW
+filterChannels : List String -> String -> List String
+filterChannels channels query =
+  let
+    containsCaseInsensitive str1 str2 =
+      String.contains (String.toLower str1) (String.toLower str2)
+  in
+    List.filter (containsCaseInsensitive query) channels
+
+renderChannel : String -> Html
+renderChannel name =
+  li [ class "collection-item" ] [ text <| "#" ++ name ]
+
+renderChannels : List String -> Html
+renderChannels channels =
+  let
+    channelItems = List.map renderChannel channels
+  in
+    ul [ class "collection" ] channelItems
+
+view : Signal.Address Action -> Model -> Html
+view address model =
+  div [ class "card-panel" ] [
+    input [ onInput address Filter ] [],
+    renderChannels (filterChannels model.channels model.query)
+  ]
+
+main : Signal Html
+main =
+  StartApp.start
+    { model = initialModel
+    , update = update
+    , view = view
+    }
